@@ -21,10 +21,14 @@ class screenSaver extends require('events').EventEmitter {
 
   async start(){
 
+    if(this._started)
+      return;
+
+    this._started = true;
+
     if(this.shouldStart)
       this.emit('open');
 
-    this._started = true;
     do {
       try {
         while((await this._properIdleTime()) >  this.timeout)

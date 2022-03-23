@@ -8,7 +8,7 @@
 
 ```
 
-const ScreenSaver = require('node-screen-saver');
+const ScreenSaver = require('node-screensaver');
 const getIdleTime = require('screensaver-trigger/idle_time_linux').getIdleTime;
 
 const timeout = 60 * 1000; //1min

@@ -28,6 +28,8 @@ describe('win/linux screen saver test', function() {
       open = false;
     })
     screenSaver.start();
+    screenSaver.start();
+    screenSaver.start();
     await sleep(200);
     expect(open).to.be(true);
     await move(10, 5);
@@ -46,6 +48,9 @@ describe('win/linux screen saver test', function() {
     screenSaver.on('close',() => {
       open = false;
     })
+    screenSaver.start();
+    screenSaver.start();
+    screenSaver.start();
     screenSaver.start();
     await sleep(200);
     expect(open).to.be(true);

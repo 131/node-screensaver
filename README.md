@@ -1,20 +1,26 @@
-# Screensaver trigger (for nodejs)
+# Screensaver API (for nodejs)
 
-[![Version](https://img.shields.io/npm/v/node-screen-saver.svg)](https://www.npmjs.com/package/node-screen-saver)
+[![Version](https://img.shields.io/npm/v/@131/screensaver.svg)](https://www.npmjs.com/package/@131/screensaver)
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](http://opensource.org/licenses/MIT)
-[![Build Status](https://travis-ci.com/idjem/screen-saver-trigger.svg?branch=master)](https://travis-ci.org/idjem/screen-saver-trigger)
+[![Build Status](https://github.com/131/ubk/actions/workflows/test.yml/badge.svg?branch=master)](https://github.com/131/ubk/actions/workflows/test.yml)
+![Available platform](https://img.shields.io/badge/platform-win32-blue.svg) ![Available platform](https://img.shields.io/badge/platform-linux-blue.svg)
+
+# Motivation
+A simple screensaver API that enable you to wait for a configured idle time. And stop over user interaction.
+Detecting user interaction (mostly a system wide API call, is delegated to an external closure). See below for details
+
 
 # API
 
 ```
+const ScreenSaver = require('@131/screensaver');
 
-const ScreenSaver = require('node-screensaver');
-const getIdleTime = require('screensaver-trigger/idle_time_linux').getIdleTime;
+const {getIdleTime} = os.platform() == 'linux' ? require('screensaver-trigger/idle_time_linux') : require('winapi');
+
 
 const timeout = 60 * 1000; //1min
-const startOnScreenSaver = true; //1min
 
-const screenSaver = new ScreenSaver(timeout, getIdleTime, startOnScreenSaver);
+const screenSaver = new ScreenSaver(timeout, getIdleTime);
 
 screenSaver.on('open', () => {
   console.log('screen saver start');
@@ -25,14 +31,10 @@ screenSaver.on('close', () => {
 })
 
 
-setTimeout(() => {
-  screenSaver.simuleTouch();
-}, 1000);
-
-setTimeout(() => {
-  screenSaver.resetIdleTime();
-}, 5000);
-
-
-
 ```
+
+
+
+# Credits 
+* [131](https://github.com/131)
+* [idjem](https://github.com/idjem)

@@ -4,8 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -b",
-    "cover" : "nyc mocha"
+    "mocha": "mocha --exit -b",
+    "test": "npm run cover",
+    "cover" : "nyc mocha  --exit"
   },
   "author": "131.code@leurent.email",
   "license": "ISC",

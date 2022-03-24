@@ -1,12 +1,12 @@
 {
   "name": "@131/screensaver",
-  "version": "1.3.3",
+  "version": "1.3.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "mocha": "mocha --exit -b",
     "test": "npm run cover",
-    "cover" : "nyc mocha  --exit"
+    "cover": "nyc mocha  --exit"
   },
   "author": "131.code@leurent.email",
   "license": "ISC",
